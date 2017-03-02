@@ -36,3 +36,6 @@ C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\Ge
 C:\Users\Familia\Documents\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.config
 C:\Users\Familia\Documents\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
 C:\Users\Familia\Documents\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
+C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.config
+C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
+C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
