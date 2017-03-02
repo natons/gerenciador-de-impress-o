@@ -233,7 +233,7 @@ namespace GerenciadorDeImpressao
                     {
                         foreach (var job in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
                         {
-                            if ((lastJobId == 0 || lastJobId != job.JobIdentifier))// && String.Compare(job.Submitter, Environment.UserName, true) == 0)
+                            if ((lastJobId == 0 || lastJobId != job.JobIdentifier) && String.Compare(job.Submitter, Environment.UserName, true) == 0)
                             {
                                 DoWork(job, TrimPrinterName(print));
                                 lastJobId = job.JobIdentifier;
