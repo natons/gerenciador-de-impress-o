@@ -1,0 +1,38 @@
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.config
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.pdb
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.csprojResolveAssemblyReference.cache
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.Properties.Resources.resources
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.csproj.GenerateResource.Cache
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.Init.resources
+d:\documentos\visual studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.SelectCompany.resources
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.config
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.manifest
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.application
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.pdb
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\EntityFramework.dll
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\itextsharp.dll
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.dll
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\EntityFramework.xml
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\itextsharp.xml
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.xml
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.Init.resources
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.InsertCompanies.resources
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.Properties.Resources.resources
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.SelectCompany.resources
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.csproj.GenerateResource.Cache
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe.manifest
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.application
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
+C:\Users\Familia\Documents\Visual Studio 2015\Projects\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.csprojResolveAssemblyReference.cache
+C:\Users\Familia\Documents\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.config
+C:\Users\Familia\Documents\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
+C:\Users\Familia\Documents\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
