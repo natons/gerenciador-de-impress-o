@@ -11,9 +11,15 @@ O software foi desenvolvido por uma demanda que um cliente necessitava.
 É necessário que tenha em mãos o executável e o arquivo de banco de dados __sqlite3__.
 
 
-## Contributors
+## Autores
 
 ```
 * **Marcos Paulo**
 * **Natanael Natons**
+```
+
+## Contribuidores
+
+```
+* **Angelo Pimentel**
 ```
