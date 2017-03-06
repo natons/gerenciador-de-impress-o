@@ -173,29 +173,7 @@ namespace GerenciadorDeImpressao
 
             return valueString;
         }
-
-        public static void UpdatePrint(string path, string company, string newName)
-        {
-            SQLiteConnection connection = null;
-            try
-            {
-                //connection = new Connection(path).CreateConnection();
-                //SQLiteCommand command = new SQLiteCommand(connection);
-                //command.CommandText =
-                //    "update Impressao set empresa = '" + newName.Trim() + "' where id = " + GetPrint(path, company).id;
-                //command.ExecuteNonQuery();
-            }
-            catch (SQLiteException e)
-            {
-                MessageBox.Show("Erro ao atualizar Banco de dados! " + e.Message);
-            }
-            finally
-            {
-                if (connection != null)
-                    connection.Close();
-            }
-        }
-
+        
         public static List<Print> GetPrintsToCompany(string path, int id)
         {
             SQLiteConnection connection = null;
@@ -259,7 +237,7 @@ namespace GerenciadorDeImpressao
                 "SELECT e.nome, i.nome, imp.nome_documento, imp.qtd_paginas, imp.data, imp.custo " +
                 "FROM Impressao imp INNER JOIN Empresa e ON e.id = imp.id_empresa " + company +
                 " INNER JOIN Impressora i ON i.id = imp.id_impressora " + printer + " AND (imp.data BETWEEN '" + VerifyDate(dateInit) 
-                + "' AND '" + VerifyDate(dateFinish) + "')";
+                + "' AND '" + VerifyDate(dateFinish) + "') ORDER BY e.nome ASC";
             SQLiteDataAdapter dataAdapter =
                 new SQLiteDataAdapter(sql, new Connection(pathArchive).CreateConnection());
             dataAdapter.Fill(dataSet);
@@ -448,14 +426,14 @@ namespace GerenciadorDeImpressao
         }
 
         //ARCHIVE PRINTERS
-        public static void SavePrintersInArchive(ListBox.SelectedObjectCollection list, string pathDB)
+        public static void SavePrintersInArchive(StringCollection printers, string pathDB)
         {
             if(!Directory.Exists(@"C:\GerenciadorDeImpressao\"))
                 Directory.CreateDirectory(@"C:\GerenciadorDeImpressao\");
 
             using (var writer = new StreamWriter(@"C:\GerenciadorDeImpressao\conf.txt"))
             {
-                foreach(var item in list)
+                foreach(var item in printers)
                 {
                     writer.WriteLine(item.ToString().Trim());
                 }

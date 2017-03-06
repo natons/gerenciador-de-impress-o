@@ -170,6 +170,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dev printer.ico" />
+    <None Include="Resources\hide.png" />
+    <None Include="Resources\ready.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\gerenciar.png" />
+    <None Include="Resources\pdf.png" />
+    <None Include="Resources\bd.png" />
+    <None Include="Resources\Fundo.jpg" />
     <None Include="Resources\search.png" />
     <None Include="Resources\icon-add.png" />
     <None Include="Resources\ok_icon.png" />

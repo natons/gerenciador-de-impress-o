@@ -146,13 +146,24 @@ namespace GerenciadorDeImpressao
                 threadContext.IsBackground = false;
                 threadContext.Start();
 
-                DataManager.SavePrintersInArchive(clbPrintersName.SelectedItems, pathArchive);
+                DataManager.SavePrintersInArchive(GetPrintersChecked(), pathArchive);
             }
+        }
+
+        private StringCollection GetPrintersChecked()
+        {
+            StringCollection printers = new StringCollection();
+            foreach(var item in clbPrintersName.CheckedItems)
+            {
+                printers.Add(item.ToString());
+            }
+
+            return printers;
         }
 
         private bool ValidatePrinters()
         {
-            if (clbPrintersName.SelectedItems.Count > 0)
+            if (clbPrintersName.CheckedItems.Count > 0)
                 return true;
             MessageBox.Show("É necessário selecionar ao menos uma impressora!");
             return false;
@@ -162,7 +173,7 @@ namespace GerenciadorDeImpressao
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                Hide();
+                //Hide();
             }
         }
 
@@ -404,42 +415,49 @@ namespace GerenciadorDeImpressao
 
         private void generatePDF_MouseHover(object sender, EventArgs e)
         {
-            generatePDF.Image = Properties.Resources.pdf_icon_hover;
         }
 
         private void generatePDF_MouseLeave(object sender, EventArgs e)
         {
-            generatePDF.Image = Properties.Resources.pdf_icon;
         }
 
         private void confirm_MouseHover(object sender, EventArgs e)
         {
-            gerenciar.Image = Properties.Resources.gerenciar_icon_hover;
         }
 
         private void confirm_MouseLeave(object sender, EventArgs e)
         {
-            gerenciar.Image = Properties.Resources.gerenciar_icon;
         }
 
         private void selectDB_MouseHover(object sender, EventArgs e)
         {
-            selectDB.Image = Properties.Resources.bancodedados_icon_hover;
         }
 
         private void selectDB_MouseLeave(object sender, EventArgs e)
         {
-            selectDB.Image = Properties.Resources.bancodedados_icon;
         }
 
         private void confirm_MouseHover_1(object sender, EventArgs e)
         {
-            confirm.Image = Properties.Resources.confirmar_icon_hover;
         }
 
         private void confirm_MouseLeave_1(object sender, EventArgs e)
         {
-            confirm.Image = Properties.Resources.confirmar_icon;
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            Hide();   
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if (WindowState != FormWindowState.Minimized && this.Opacity > 0)
+            {
+                this.Opacity = 100;
+                this.ShowInTaskbar = true;
+                WindowState = FormWindowState.Minimized;
+            }
         }
     }
 }

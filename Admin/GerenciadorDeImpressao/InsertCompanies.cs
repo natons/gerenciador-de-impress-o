@@ -324,11 +324,11 @@ namespace GerenciadorDeImpressao
                 if (savePDF.ShowDialog() == DialogResult.OK)
                 {
                     PDFGenereator.GenerateTable(dgvR, savePDF.FileName);
-                    MessageBox.Show("PDF Gerado com sucesso! " + savePDF.FileName);
+                    
                 }
             }
             else
-                MessageBox.Show("É necessário selecionar o arquivo de Saída!");
+                lbMessage.Text = "É necessário selecionar o arquivo de Saída!";
         }
         [STAThread]
         private void btnExportPDF_Click(object sender, EventArgs e)

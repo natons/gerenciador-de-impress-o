@@ -12,32 +12,20 @@ namespace GerenciadorDeImpressao
 {
     static class PDFGenereator
     {
+        private static PdfPTable pdfTable;
+
         public static void GenerateTable(DataGridView dgvR, string path)
         {
 
             //Creating iTextSharp Table from the DataTable data
-            PdfPTable pdfTable = new PdfPTable(dgvR.Columns.Count);
-            pdfTable.DefaultCell.Padding = 3;
-            pdfTable.WidthPercentage = 100;
-            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            pdfTable.DefaultCell.BorderWidth = 1;
+            CreatingiTextSharpTable(dgvR);
+
 
             //Adding Header row
-            foreach (DataGridViewColumn column in dgvR.Columns)
-            {
-                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                cell.BackgroundColor = new BaseColor(240, 240, 240);
-                pdfTable.AddCell(cell);
-            }
+            AddingHeader(dgvR);
 
             //Adding DataRow
-            for (int i = 0; i < dgvR.Rows.Count - 1; i++)
-            {
-                foreach (DataGridViewCell cell in dgvR.Rows[i].Cells)
-                {
-                    pdfTable.AddCell(cell.Value.ToString());
-                }
-            }
+            AddingDataRow(dgvR);
 
             //Exporting to PDF
             using (FileStream stream = new FileStream(path, FileMode.Create))
@@ -50,6 +38,17 @@ namespace GerenciadorDeImpressao
                 stream.Close();
             }
             
+        }
+
+        private static void AddingDataRow(DataGridView dgvR)
+        {
+            for (int i = 0; i < dgvR.Rows.Count - 1; i++)
+            {
+                foreach (DataGridViewCell cell in dgvR.Rows[i].Cells)
+                {
+                    pdfTable.AddCell(cell.Value.ToString());
+                }
+            }
         }
 
         private static double GetTotalCost(List<Print> prints)
@@ -72,6 +71,25 @@ namespace GerenciadorDeImpressao
             }
 
             return pages;
+        }
+
+        private static void CreatingiTextSharpTable(DataGridView dgvR)
+        {
+            pdfTable = new PdfPTable(dgvR.Columns.Count);
+            pdfTable.DefaultCell.Padding = 3;
+            pdfTable.WidthPercentage = 100;
+            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable.DefaultCell.BorderWidth = 1;
+        }
+
+        private static void AddingHeader(DataGridView dgvR)
+        {
+            foreach (DataGridViewColumn column in dgvR.Columns)
+            {
+                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                cell.BackgroundColor = new BaseColor(240, 240, 240);
+                pdfTable.AddCell(cell);
+            }
         }
     }
 }
