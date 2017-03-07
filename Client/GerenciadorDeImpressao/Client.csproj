@@ -115,7 +115,6 @@
     <Compile Include="Init.Designer.cs">
       <DependentUpon>Init.cs</DependentUpon>
     </Compile>
-    <Compile Include="PDFGenereator.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="Printer.cs" />
@@ -161,6 +160,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dev printer.ico" />
+    <None Include="Resources\hide_hover.png" />
+    <None Include="Resources\fundo_client.png" />
+    <None Include="Resources\hide.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\bd.png" />
     <None Include="Resources\fundoSelecionarEmpresa.jpg" />
     <None Include="Resources\bancodedados-icon-hover.png" />
     <None Include="Resources\bancodedados-icon.png" />

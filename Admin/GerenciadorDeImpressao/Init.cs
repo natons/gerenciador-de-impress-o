@@ -18,7 +18,10 @@ namespace GerenciadorDeImpressao
         private InsertCompanies insertCompanies = null;
         private string pathArchive = "";
         private int idJob = -1;
-        
+        private int X = 0;
+        private int Y = 0;
+
+
         public Init()
         {
             InitializeComponent();
@@ -458,6 +461,40 @@ namespace GerenciadorDeImpressao
                 this.ShowInTaskbar = true;
                 WindowState = FormWindowState.Minimized;
             }
+        }
+
+        private void miniminize_MouseHover(object sender, EventArgs e)
+        {
+            miniminize.Image = Properties.Resources.hide_hover;
+        }
+
+        private void miniminize_MouseLeave(object sender, EventArgs e)
+        {
+            miniminize.Image = Properties.Resources.hide;
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            X = this.Left - MousePosition.X;
+            Y = this.Top - MousePosition.Y;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            this.Left = X + MousePosition.X;
+            this.Top = Y + MousePosition.Y;
+        }
+
+        private void close_MouseHover(object sender, EventArgs e)
+        {
+            close.Image = Properties.Resources.close_hover;
+        }
+
+        private void close_MouseLeave(object sender, EventArgs e)
+        {
+            close.Image = Properties.Resources.close;
         }
     }
 }

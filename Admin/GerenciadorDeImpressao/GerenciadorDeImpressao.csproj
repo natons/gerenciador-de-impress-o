@@ -170,13 +170,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dev printer.ico" />
+    <None Include="Resources\close_hover.png" />
+    <None Include="Resources\Fundo.jpg" />
+    <None Include="Resources\hide_hover.png" />
     <None Include="Resources\hide.png" />
     <None Include="Resources\ready.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\gerenciar.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\bd.png" />
-    <None Include="Resources\Fundo.jpg" />
     <None Include="Resources\search.png" />
     <None Include="Resources\icon-add.png" />
     <None Include="Resources\ok_icon.png" />
@@ -186,14 +188,6 @@
     <None Include="Resources\fundoSelecionarEmpresa.jpg" />
     <None Include="Resources\ok.png" />
     <None Include="Resources\fundoGerenciar.jpg" />
-    <None Include="Resources\confirmar-icon-hover.png" />
-    <None Include="Resources\confirmar-icon.png" />
-    <None Include="Resources\bancodedados-icon-hover.png" />
-    <None Include="Resources\bancodedados-icon.png" />
-    <None Include="Resources\gerenciar-icon-hover.png" />
-    <None Include="Resources\gerenciar-icon.png" />
-    <None Include="Resources\pdf-icon-hover.png" />
-    <None Include="Resources\pdf-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

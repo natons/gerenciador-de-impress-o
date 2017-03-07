@@ -14,7 +14,9 @@ namespace GerenciadorDeImpressao
         private string pathArchive = "";
         private string path = "";
         private int idJob = -1;
-        
+        private int X = 0;
+        private int Y = 0;
+
         public Init()
         {
             InitializeComponent();
@@ -256,12 +258,44 @@ namespace GerenciadorDeImpressao
 
         private void selectDB_MouseHover(object sender, EventArgs e)
         {
-            selectDB.Image = Properties.Resources.bancodedados_icon_hover;
+            selectDB.Image = Properties.Resources.bd;
         }
 
         private void selectDB_MouseLeave(object sender, EventArgs e)
         {
-            selectDB.Image = Properties.Resources.bancodedados_icon;
+            selectDB.Image = Properties.Resources.bd;
+        }
+
+        private void miniminize_Click(object sender, EventArgs e)
+        {
+            if(WindowState != FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            X = this.Left - MousePosition.X;
+            Y = this.Top - MousePosition.Y;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            this.Left = X + MousePosition.X;
+            this.Top = Y + MousePosition.Y;
+        }
+
+        private void miniminize_MouseHover(object sender, EventArgs e)
+        {
+            miniminize.Image = Properties.Resources.hide_hover;
+        }
+
+        private void miniminize_MouseLeave(object sender, EventArgs e)
+        {
+            miniminize.Image = Properties.Resources.hide;
         }
     }
 }

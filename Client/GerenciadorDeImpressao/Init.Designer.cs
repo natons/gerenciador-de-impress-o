@@ -31,15 +31,45 @@ namespace GerenciadorDeImpressao
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Init));
-            this.selectDB = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.miniminize = new System.Windows.Forms.Label();
+            this.selectDB = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.miniminize);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(219, 22);
+            this.panel1.TabIndex = 12;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            // 
+            // miniminize
+            // 
+            this.miniminize.BackColor = System.Drawing.Color.Transparent;
+            this.miniminize.Image = global::GerenciadorDeImpressao.Properties.Resources.hide;
+            this.miniminize.Location = new System.Drawing.Point(193, 1);
+            this.miniminize.Name = "miniminize";
+            this.miniminize.Size = new System.Drawing.Size(21, 20);
+            this.miniminize.TabIndex = 11;
+            this.miniminize.Click += new System.EventHandler(this.miniminize_Click);
+            this.miniminize.MouseLeave += new System.EventHandler(this.miniminize_MouseLeave);
+            this.miniminize.MouseHover += new System.EventHandler(this.miniminize_MouseHover);
             // 
             // selectDB
             // 
             this.selectDB.BackColor = System.Drawing.Color.Transparent;
-            this.selectDB.Image = global::GerenciadorDeImpressao.Properties.Resources.bancodedados_icon;
-            this.selectDB.Location = new System.Drawing.Point(86, 33);
+            this.selectDB.Image = global::GerenciadorDeImpressao.Properties.Resources.bd;
+            this.selectDB.Location = new System.Drawing.Point(89, 40);
             this.selectDB.Name = "selectDB";
             this.selectDB.Size = new System.Drawing.Size(48, 60);
             this.selectDB.TabIndex = 9;
@@ -47,24 +77,23 @@ namespace GerenciadorDeImpressao
             this.selectDB.MouseLeave += new System.EventHandler(this.selectDB_MouseLeave);
             this.selectDB.MouseHover += new System.EventHandler(this.selectDB_MouseHover);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // Init
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackgroundImage = global::GerenciadorDeImpressao.Properties.Resources.fundoSelecionarEmpresa;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(219, 119);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.selectDB);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Init";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Init_FormClosing);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -72,6 +101,8 @@ namespace GerenciadorDeImpressao
         #endregion
         private Label selectDB;
         private OpenFileDialog openFileDialog1;
+        private Label miniminize;
+        private Panel panel1;
     }
 }
 

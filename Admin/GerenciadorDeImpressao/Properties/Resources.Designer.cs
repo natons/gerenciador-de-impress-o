@@ -63,26 +63,6 @@ namespace GerenciadorDeImpressao.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bancodedados_icon {
-            get {
-                object obj = ResourceManager.GetObject("bancodedados_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap bancodedados_icon_hover {
-            get {
-                object obj = ResourceManager.GetObject("bancodedados_icon_hover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap bd {
             get {
                 object obj = ResourceManager.GetObject("bd", resourceCulture);
@@ -103,19 +83,9 @@ namespace GerenciadorDeImpressao.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap confirmar_icon {
+        internal static System.Drawing.Bitmap close_hover {
             get {
-                object obj = ResourceManager.GetObject("confirmar_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap confirmar_icon_hover {
-            get {
-                object obj = ResourceManager.GetObject("confirmar_icon_hover", resourceCulture);
+                object obj = ResourceManager.GetObject("close_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,29 +133,19 @@ namespace GerenciadorDeImpressao.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gerenciar_icon {
-            get {
-                object obj = ResourceManager.GetObject("gerenciar_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap gerenciar_icon_hover {
-            get {
-                object obj = ResourceManager.GetObject("gerenciar_icon_hover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap hide {
             get {
                 object obj = ResourceManager.GetObject("hide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hide_hover {
+            get {
+                object obj = ResourceManager.GetObject("hide_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -236,26 +196,6 @@ namespace GerenciadorDeImpressao.Properties {
         internal static System.Drawing.Bitmap pdf {
             get {
                 object obj = ResourceManager.GetObject("pdf", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pdf_icon {
-            get {
-                object obj = ResourceManager.GetObject("pdf_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pdf_icon_hover {
-            get {
-                object obj = ResourceManager.GetObject("pdf_icon_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

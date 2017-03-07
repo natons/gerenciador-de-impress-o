@@ -35,13 +35,15 @@ namespace GerenciadorDeImpressao
             this.clbPrintersName = new System.Windows.Forms.CheckedListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.generateVa = new System.Windows.Forms.Label();
-            this.generatePDF = new System.Windows.Forms.Label();
-            this.gerenciar = new System.Windows.Forms.Label();
-            this.selectDB = new System.Windows.Forms.Label();
-            this.confirm = new System.Windows.Forms.Label();
-            this.close = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.miniminize = new System.Windows.Forms.Label();
+            this.close = new System.Windows.Forms.Label();
+            this.confirm = new System.Windows.Forms.Label();
+            this.selectDB = new System.Windows.Forms.Label();
+            this.gerenciar = new System.Windows.Forms.Label();
+            this.generatePDF = new System.Windows.Forms.Label();
+            this.generateVa = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // clbPrintersName
@@ -50,9 +52,9 @@ namespace GerenciadorDeImpressao
             this.clbPrintersName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.clbPrintersName.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbPrintersName.FormattingEnabled = true;
-            this.clbPrintersName.Location = new System.Drawing.Point(22, 67);
+            this.clbPrintersName.Location = new System.Drawing.Point(20, 63);
             this.clbPrintersName.Name = "clbPrintersName";
-            this.clbPrintersName.Size = new System.Drawing.Size(326, 221);
+            this.clbPrintersName.Size = new System.Drawing.Size(315, 204);
             this.clbPrintersName.TabIndex = 0;
             // 
             // openFileDialog1
@@ -70,58 +72,45 @@ namespace GerenciadorDeImpressao
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // generateVa
+            // panel1
             // 
-            this.generateVa.AutoSize = true;
-            this.generateVa.BackColor = System.Drawing.Color.Transparent;
-            this.generateVa.ForeColor = System.Drawing.Color.Transparent;
-            this.generateVa.Image = global::GerenciadorDeImpressao.Properties.Resources.pdf_icon;
-            this.generateVa.Location = new System.Drawing.Point(167, 299);
-            this.generateVa.Name = "generateVa";
-            this.generateVa.Size = new System.Drawing.Size(0, 13);
-            this.generateVa.TabIndex = 6;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.miniminize);
+            this.panel1.Controls.Add(this.close);
+            this.panel1.Location = new System.Drawing.Point(5, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(348, 25);
+            this.panel1.TabIndex = 13;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
-            // generatePDF
+            // miniminize
             // 
-            this.generatePDF.BackColor = System.Drawing.Color.Transparent;
-            this.generatePDF.Image = global::GerenciadorDeImpressao.Properties.Resources.pdf;
-            this.generatePDF.Location = new System.Drawing.Point(120, 295);
-            this.generatePDF.Name = "generatePDF";
-            this.generatePDF.Size = new System.Drawing.Size(37, 50);
-            this.generatePDF.TabIndex = 7;
-            this.generatePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
-            this.generatePDF.MouseLeave += new System.EventHandler(this.generatePDF_MouseLeave);
-            this.generatePDF.MouseHover += new System.EventHandler(this.generatePDF_MouseHover);
+            this.miniminize.Image = global::GerenciadorDeImpressao.Properties.Resources.hide;
+            this.miniminize.Location = new System.Drawing.Point(301, 5);
+            this.miniminize.Name = "miniminize";
+            this.miniminize.Size = new System.Drawing.Size(14, 15);
+            this.miniminize.TabIndex = 12;
+            this.miniminize.Click += new System.EventHandler(this.label1_Click);
+            this.miniminize.MouseLeave += new System.EventHandler(this.miniminize_MouseLeave);
+            this.miniminize.MouseHover += new System.EventHandler(this.miniminize_MouseHover);
             // 
-            // gerenciar
+            // close
             // 
-            this.gerenciar.BackColor = System.Drawing.Color.Transparent;
-            this.gerenciar.Image = ((System.Drawing.Image)(resources.GetObject("gerenciar.Image")));
-            this.gerenciar.Location = new System.Drawing.Point(192, 296);
-            this.gerenciar.Name = "gerenciar";
-            this.gerenciar.Size = new System.Drawing.Size(49, 50);
-            this.gerenciar.TabIndex = 8;
-            this.gerenciar.Click += new System.EventHandler(this.InsertCompanies_Click);
-            this.gerenciar.MouseLeave += new System.EventHandler(this.confirm_MouseLeave);
-            this.gerenciar.MouseHover += new System.EventHandler(this.confirm_MouseHover);
-            // 
-            // selectDB
-            // 
-            this.selectDB.BackColor = System.Drawing.Color.Transparent;
-            this.selectDB.Image = global::GerenciadorDeImpressao.Properties.Resources.bd;
-            this.selectDB.Location = new System.Drawing.Point(49, 297);
-            this.selectDB.Name = "selectDB";
-            this.selectDB.Size = new System.Drawing.Size(44, 44);
-            this.selectDB.TabIndex = 9;
-            this.selectDB.Click += new System.EventHandler(this.btnSelectArchive_Click);
-            this.selectDB.MouseLeave += new System.EventHandler(this.selectDB_MouseLeave);
-            this.selectDB.MouseHover += new System.EventHandler(this.selectDB_MouseHover);
+            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
+            this.close.Location = new System.Drawing.Point(322, 5);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(14, 15);
+            this.close.TabIndex = 11;
+            this.close.Click += new System.EventHandler(this.close_Click);
+            this.close.MouseLeave += new System.EventHandler(this.close_MouseLeave);
+            this.close.MouseHover += new System.EventHandler(this.close_MouseHover);
             // 
             // confirm
             // 
             this.confirm.BackColor = System.Drawing.Color.Transparent;
             this.confirm.Image = ((System.Drawing.Image)(resources.GetObject("confirm.Image")));
-            this.confirm.Location = new System.Drawing.Point(269, 295);
+            this.confirm.Location = new System.Drawing.Point(259, 287);
             this.confirm.Name = "confirm";
             this.confirm.Size = new System.Drawing.Size(61, 53);
             this.confirm.TabIndex = 10;
@@ -129,23 +118,52 @@ namespace GerenciadorDeImpressao
             this.confirm.MouseLeave += new System.EventHandler(this.confirm_MouseLeave_1);
             this.confirm.MouseHover += new System.EventHandler(this.confirm_MouseHover_1);
             // 
-            // close
+            // selectDB
             // 
-            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
-            this.close.Location = new System.Drawing.Point(339, 18);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(14, 15);
-            this.close.TabIndex = 11;
-            this.close.Click += new System.EventHandler(this.close_Click);
+            this.selectDB.BackColor = System.Drawing.Color.Transparent;
+            this.selectDB.Image = global::GerenciadorDeImpressao.Properties.Resources.bd;
+            this.selectDB.Location = new System.Drawing.Point(39, 289);
+            this.selectDB.Name = "selectDB";
+            this.selectDB.Size = new System.Drawing.Size(44, 44);
+            this.selectDB.TabIndex = 9;
+            this.selectDB.Click += new System.EventHandler(this.btnSelectArchive_Click);
+            this.selectDB.MouseLeave += new System.EventHandler(this.selectDB_MouseLeave);
+            this.selectDB.MouseHover += new System.EventHandler(this.selectDB_MouseHover);
             // 
-            // miniminize
+            // gerenciar
             // 
-            this.miniminize.Image = global::GerenciadorDeImpressao.Properties.Resources.hide;
-            this.miniminize.Location = new System.Drawing.Point(317, 18);
-            this.miniminize.Name = "miniminize";
-            this.miniminize.Size = new System.Drawing.Size(14, 15);
-            this.miniminize.TabIndex = 12;
-            this.miniminize.Click += new System.EventHandler(this.label1_Click);
+            this.gerenciar.BackColor = System.Drawing.Color.Transparent;
+            this.gerenciar.Image = ((System.Drawing.Image)(resources.GetObject("gerenciar.Image")));
+            this.gerenciar.Location = new System.Drawing.Point(182, 288);
+            this.gerenciar.Name = "gerenciar";
+            this.gerenciar.Size = new System.Drawing.Size(49, 50);
+            this.gerenciar.TabIndex = 8;
+            this.gerenciar.Click += new System.EventHandler(this.InsertCompanies_Click);
+            this.gerenciar.MouseLeave += new System.EventHandler(this.confirm_MouseLeave);
+            this.gerenciar.MouseHover += new System.EventHandler(this.confirm_MouseHover);
+            // 
+            // generatePDF
+            // 
+            this.generatePDF.BackColor = System.Drawing.Color.Transparent;
+            this.generatePDF.Image = global::GerenciadorDeImpressao.Properties.Resources.pdf;
+            this.generatePDF.Location = new System.Drawing.Point(110, 287);
+            this.generatePDF.Name = "generatePDF";
+            this.generatePDF.Size = new System.Drawing.Size(37, 50);
+            this.generatePDF.TabIndex = 7;
+            this.generatePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
+            this.generatePDF.MouseLeave += new System.EventHandler(this.generatePDF_MouseLeave);
+            this.generatePDF.MouseHover += new System.EventHandler(this.generatePDF_MouseHover);
+            // 
+            // generateVa
+            // 
+            this.generateVa.AutoSize = true;
+            this.generateVa.BackColor = System.Drawing.Color.Transparent;
+            this.generateVa.ForeColor = System.Drawing.Color.Transparent;
+            this.generateVa.Image = global::GerenciadorDeImpressao.Properties.Resources.pdf;
+            this.generateVa.Location = new System.Drawing.Point(167, 299);
+            this.generateVa.Name = "generateVa";
+            this.generateVa.Size = new System.Drawing.Size(0, 13);
+            this.generateVa.TabIndex = 6;
             // 
             // Init
             // 
@@ -154,10 +172,9 @@ namespace GerenciadorDeImpressao
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(365, 368);
+            this.ClientSize = new System.Drawing.Size(356, 353);
             this.ControlBox = false;
-            this.Controls.Add(this.miniminize);
-            this.Controls.Add(this.close);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.confirm);
             this.Controls.Add(this.selectDB);
             this.Controls.Add(this.gerenciar);
@@ -172,6 +189,7 @@ namespace GerenciadorDeImpressao
             this.Text = "Configurações";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Init_FormClosing);
             this.Resize += new System.EventHandler(this.Init_Resize);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,6 +207,7 @@ namespace GerenciadorDeImpressao
         private Label confirm;
         private Label close;
         private Label miniminize;
+        private Panel panel1;
     }
 }
 
