@@ -23,6 +23,8 @@ C:\Users\Familia\Documents\Visual Studio 2015\Projects\Client\GerenciadorDeImpre
 C:\Users\Familia\Documents\Visual Studio 2015\Projects\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
 C:\Users\Familia\Documents\Visual Studio 2015\Projects\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.config
+C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
+C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.manifest
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.application
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe
@@ -37,12 +39,10 @@ C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpress
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\bin\Debug\itextsharp.xml
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.xml
+C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\Client.csprojResolveAssemblyReference.cache
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.Init.resources
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.Properties.Resources.resources
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.SelectCompany.resources
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe.manifest
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.application
-C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
-C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
-C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Client\GerenciadorDeImpressao\obj\Debug\Client.csprojResolveAssemblyReference.cache
