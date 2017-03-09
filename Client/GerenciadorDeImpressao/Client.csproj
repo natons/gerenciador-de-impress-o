@@ -116,6 +116,7 @@
       <DependentUpon>Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Company.cs" />
+    <Compile Include="Job.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="PrintJobManager.cs" />

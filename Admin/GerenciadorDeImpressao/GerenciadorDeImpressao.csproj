@@ -121,6 +121,7 @@
     <Compile Include="InsertCompanies.Designer.cs">
       <DependentUpon>InsertCompanies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Job.cs" />
     <Compile Include="PDFGenereator.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Print.cs" />
