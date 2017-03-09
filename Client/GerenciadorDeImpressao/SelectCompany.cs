@@ -14,11 +14,11 @@ namespace GerenciadorDeImpressao
     public partial class SelectCompany : Form
     {
         private string companySelect = "";
+        private bool close = false;
         private string pathArchive;
-        private Job job = null;
-        private bool cancel = true;
+        private PrintSystemJobInfo job = null;
 
-        public SelectCompany(string pathArchive,  Job job)
+        public SelectCompany(string pathArchive,  PrintSystemJobInfo job)
         {
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace GerenciadorDeImpressao
         private void btnOK_Click(object sender, EventArgs e)
         {
             companySelect = cbCompanies.SelectedItem.ToString();
-            cancel = false;
+            close = true;
             Dispose();
         }
 
@@ -48,8 +48,12 @@ namespace GerenciadorDeImpressao
 
         private void SelectCompany_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (cancel)
-                PrintJobManager.ActionPrintJob(job.PrinterName, job.Id, PrintJobManager.CANCEL);
+            job.Cancel();
+        }
+
+        public bool GetClose()
+        {
+            return close;
         }
 
         public string GetCompanySelect()
@@ -64,7 +68,7 @@ namespace GerenciadorDeImpressao
 
         private void btnCancelPrint_Click(object sender, EventArgs e)
         {
-            PrintJobManager.ActionPrintJob(job.PrinterName, job.Id, PrintJobManager.CANCEL);
+            job.Cancel();
             Dispose();
         }
     }
