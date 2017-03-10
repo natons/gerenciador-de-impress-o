@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿using GerenciadorDeImpressao.management;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace GerenciadorDeImpressao
         {
             cbCompanies.Items.Clear();
             cbCompaniesR.Items.Clear();
-            List<Company> companies = DataManager.GetCompanies(pathArchive);
+            List<Company> companies = DataManagerCompany.GetCompanies(pathArchive);
             cbCompaniesR.Items.Add("Todas às Empresas");
             foreach (var item in companies)
             {
@@ -46,7 +47,7 @@ namespace GerenciadorDeImpressao
         {
             lbPrinters.Items.Clear();
             cbPrintersR.Items.Clear();
-            List<Printer> printers = DataManager.GetPrinters(pathArchive);
+            List<Printer> printers = DataManagerPrinter.GetPrinters(pathArchive);
             cbPrintersR.Items.Add("Todas às Impressoras");
             foreach (var item in printers)
             {
@@ -74,10 +75,10 @@ namespace GerenciadorDeImpressao
         {
             if(cbCompanies.Items.Count > 0)
             {
-                int idCompany = DataManager.GetCompany(pathArchive, cbCompanies.SelectedItem.ToString().Trim()).id;
-                if (DataManager.GetDataSetToGrid(pathArchive, idCompany).Tables[0].DefaultView.Count > 0)
+                int idCompany = DataManagerCompany.GetCompany(pathArchive, cbCompanies.SelectedItem.ToString().Trim()).id;
+                if (DataManagerPrint.GetDataSetToGrid(pathArchive, idCompany).Tables[0].DefaultView.Count > 0)
                 {
-                    dgvCompanies.DataSource = DataManager.GetDataSetToGrid(pathArchive, idCompany).Tables[0].DefaultView;
+                    dgvCompanies.DataSource = DataManagerPrint.GetDataSetToGrid(pathArchive, idCompany).Tables[0].DefaultView;
                     DefineHeadersNameGrid(dgvCompanies);
                 } else
                 {
@@ -119,15 +120,15 @@ namespace GerenciadorDeImpressao
                     lbMessage.Text = "Empresa editada com sucesso!";
                     editAction = false;
                     
-                    DataManager.UpdateCompany(pathArchive, companySelect);
+                    DataManagerCompany.UpdateCompany(pathArchive, companySelect);
                 }
                 else
                 {
-                    if (DataManager.GetCompany(pathArchive, cbCompanies.Text.Trim()) == null)
+                    if (DataManagerCompany.GetCompany(pathArchive, cbCompanies.Text.Trim()) == null)
                     {
                         Company company = new Company();
                         company.name = cbCompanies.Text.Trim();
-                        DataManager.InsertCompany(pathArchive, company);
+                        DataManagerCompany.InsertCompany(pathArchive, company);
                         lbMessage.Text = "Empresa Salva com sucesso!";
                     } else
                         lbMessage.Text = "Empresa Já existe!";
@@ -162,8 +163,8 @@ namespace GerenciadorDeImpressao
                 "Deseja realmente excluir a Impressora '" + lbPrinters.SelectedItem + "'?", "Excluir Impressora", MessageBoxButtons.YesNoCancel)
                 == DialogResult.Yes)
             {
-                Printer printer = DataManager.GetPrinter(pathArchive, lbPrinters.SelectedItem.ToString().Trim(), false);
-                DataManager.RemovePrinter(pathArchive, printer.id);
+                Printer printer = DataManagerPrinter.GetPrinter(pathArchive, lbPrinters.SelectedItem.ToString().Trim(), false);
+                DataManagerPrinter.RemovePrinter(pathArchive, printer.id);
                 lbMessage.Text = "Impressora apagada com sucesso!";
 
                 InitializeListPrinters();
@@ -191,7 +192,7 @@ namespace GerenciadorDeImpressao
         private void lbPrinters_SelectedIndexChanged(object sender, EventArgs e)
         {
             StateTextBoxPrinted(true);
-            Printer printer = DataManager.GetPrinter(pathArchive, lbPrinters.SelectedItem.ToString().Trim(), false);
+            Printer printer = DataManagerPrinter.GetPrinter(pathArchive, lbPrinters.SelectedItem.ToString().Trim(), false);
             tbMediaPages.Text = printer.lastMediaPages.ToString("0.00");
             tbPriceToner.Text = printer.priceToner.ToString("0.00");
             tbPrintedPages.Text = printer.printedPages.ToString();
@@ -199,11 +200,11 @@ namespace GerenciadorDeImpressao
 
         private void confirmPrinted_Click(object sender, EventArgs e)
         {
-            Printer printer = DataManager.GetPrinter(pathArchive, lbPrinters.SelectedItem.ToString().Trim(), false);
+            Printer printer = DataManagerPrinter.GetPrinter(pathArchive, lbPrinters.SelectedItem.ToString().Trim(), false);
             printer.lastMediaPages = Double.Parse(tbMediaPages.Text.ToString().Trim());
             printer.priceToner = Double.Parse(tbPriceToner.Text.ToString().Trim());
             printer.printedPages = Int32.Parse(tbPrintedPages.Text.ToString().Trim());
-            DataManager.UpdatePrinter(pathArchive, printer);
+            DataManagerPrinter.UpdatePrinter(pathArchive, printer);
             StateTextBoxPrinted(true);
             InitializeListPrinters();
         }
@@ -227,7 +228,7 @@ namespace GerenciadorDeImpressao
 
         private void lbEditCompany_Click(object sender, EventArgs e)
         {
-            companySelect = DataManager.GetCompany(pathArchive, cbCompanies.SelectedItem.ToString().Trim());
+            companySelect = DataManagerCompany.GetCompany(pathArchive, cbCompanies.SelectedItem.ToString().Trim());
             cbCompanies.DropDownStyle = ComboBoxStyle.Simple;
             editAction = true;
             lbConfirmCompany.Visible = true;
@@ -242,7 +243,7 @@ namespace GerenciadorDeImpressao
                 "Deseja realmente excluir a empresa '" + cbCompanies.SelectedItem + "'?", "Excluir empresa", MessageBoxButtons.YesNoCancel)
                 == DialogResult.Yes)
             {
-                DataManager.RemoveCompany(pathArchive, DataManager.GetCompany(pathArchive, cbCompanies.SelectedItem.ToString().Trim()).id);
+                DataManagerCompany.RemoveCompany(pathArchive, DataManagerCompany.GetCompany(pathArchive, cbCompanies.SelectedItem.ToString().Trim()).id);
                 lbMessage.Text = "Empresa apagada com sucesso!";
 
                 InitializeListCompanies();
@@ -275,12 +276,12 @@ namespace GerenciadorDeImpressao
         {
             if (cbCompaniesR.Items.Count > 0)
             {
-                Company company = DataManager.GetCompany(pathArchive, cbCompaniesR.SelectedItem.ToString());
-                Printer printer = DataManager.GetPrinter(pathArchive, cbPrintersR.SelectedItem.ToString(), false);
+                Company company = DataManagerCompany.GetCompany(pathArchive, cbCompaniesR.SelectedItem.ToString());
+                Printer printer = DataManagerPrinter.GetPrinter(pathArchive, cbPrintersR.SelectedItem.ToString(), false);
                 int idCompany = company == null ? 0 : company.id;
                 int idPrinter = printer == null ? 0 : printer.id;
 
-                DataView dv = DataManager.GetDataSetToGrid(
+                DataView dv = DataManagerPrint.GetDataSetToGrid(
                     pathArchive, idCompany, idPrinter, dtpInitR.Value.ToString("yyyy/MM/dd"), dtpFinishR.Value.ToString("yyyy/MM/dd"))
                     .Tables[0].DefaultView;
                 if (dv.Count > 0)

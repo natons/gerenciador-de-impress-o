@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GerenciadorDeImpressao.exe" size="1161712">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GerenciadorDeImpressao.exe" size="1159664">
       <assemblyIdentity name="GerenciadorDeImpressao" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2ggAC2f6BlKFpgO7YJhWY8GfTpIZGdzsGfTjE/V+Cxo=</dsig:DigestValue>
+        <dsig:DigestValue>+LLSIUhz9mtqwrNG1aIDT5JNMr5G+Yqnh4sCYp3YgsI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

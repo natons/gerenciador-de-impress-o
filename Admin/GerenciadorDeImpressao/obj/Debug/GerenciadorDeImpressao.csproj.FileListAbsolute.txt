@@ -63,4 +63,3 @@ C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressa
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.application
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
-C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.csprojResolveAssemblyReference.cache
