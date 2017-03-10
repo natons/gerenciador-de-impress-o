@@ -239,7 +239,11 @@ namespace GerenciadorDeImpressao
             {
                 int lastJobId = 0;
                 StringCollection printersSelected = new StringCollection();
-                printersSelected = GetSelectedPrinters();
+                Invoke(new Action(() =>
+                {
+                    printersSelected = GetSelectedPrinters();
+                }
+                ));
                 while (true)
                 {
                     foreach (var print in printersSelected)
@@ -254,7 +258,7 @@ namespace GerenciadorDeImpressao
                             }
                         }
                     }
-                    Thread.Sleep(1250);
+                    Thread.Sleep(50);
                 }
             }
             catch (ThreadAbortException te)
@@ -271,6 +275,7 @@ namespace GerenciadorDeImpressao
         {
             job.Refresh();
             job.Pause();
+            job.Refresh();
             job.Refresh();
 
             SelectCompany select = new SelectCompany(pathArchive, job);
@@ -305,7 +310,7 @@ namespace GerenciadorDeImpressao
             print.documentName = documentName;
             print.company = DataManagerCompany.GetCompany(pathArchive, company);
 
-            Printer printer = DataManagerPrinter.GetPrinter(pathArchive, printerName, true);
+            Printer printer = DataManagerPrinter.GetPrinter(pathArchive, TrimPrinterName(printerName), true);
             printer.printedPages += qtdPaginas;
             printer.lastMediaPages = PrintJobManager.LowToner(printerName) == true ? printer.mediaPages : printer.lastMediaPages;
             DataManagerPrinter.UpdatePrinter(pathArchive, printer);

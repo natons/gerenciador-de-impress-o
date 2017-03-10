@@ -66,7 +66,6 @@ namespace GerenciadorDeImpressao
 
         private void btnCancelPrint_Click(object sender, EventArgs e)
         {
-            job.Cancel();
             Dispose();
         }
     }

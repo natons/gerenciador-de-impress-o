@@ -96,7 +96,7 @@ namespace GerenciadorDeImpressao.management
             try
             {
                 connection = new Connection(pathArchive).CreateConnection();
-                string sql = "SELECT * FROM Impressora WHERE nome = '" + name.Trim() + "'";
+                string sql = $"SELECT * FROM Impressora WHERE nome = '{name.Trim()}'";
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
                 SQLiteDataReader reader = command.ExecuteReader();
                 if (reader.Read())
