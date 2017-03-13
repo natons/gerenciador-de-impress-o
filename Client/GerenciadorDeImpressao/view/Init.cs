@@ -28,7 +28,6 @@ namespace GerenciadorDeImpressao
                 path = DataManager.GetPathDB().Substring(0, DataManager.GetPathDB().LastIndexOf('\\') + 1);
                 this.Opacity = 0;
                 this.ShowInTaskbar = false;
-                
                 Ready();
             }
 

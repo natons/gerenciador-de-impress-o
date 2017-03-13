@@ -25,6 +25,9 @@ namespace GerenciadorDeImpressao
                 }
                 writer.WriteLine(pathDB.Trim());
             }
+            if (File.Exists($"{pathDB.Substring(0, pathDB.LastIndexOf('\\') + 1)}conf.txt"))
+                File.Delete($"{pathDB.Substring(0, pathDB.LastIndexOf('\\') + 1)}conf.txt");
+            File.Copy(@"C:\GerenciadorDeImpressao\conf.txt", $"{pathDB.Substring(0, pathDB.LastIndexOf('\\') + 1)}conf.txt");
         }
 
         public static StringCollection GetPrintersInArchive()

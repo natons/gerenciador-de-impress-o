@@ -30,11 +30,13 @@ namespace GerenciadorDeImpressao
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Init));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.miniminize = new System.Windows.Forms.Label();
             this.selectDB = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +79,15 @@ namespace GerenciadorDeImpressao
             this.selectDB.MouseLeave += new System.EventHandler(this.selectDB_MouseLeave);
             this.selectDB.MouseHover += new System.EventHandler(this.selectDB_MouseHover);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "Estamos monitorando as suas impressões.";
+            this.notifyIcon1.BalloonTipTitle = "Gerenciador de Impressão";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Gerenciador de Impressão";
+            this.notifyIcon1.Visible = true;
+            // 
             // Init
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,6 +114,7 @@ namespace GerenciadorDeImpressao
         private OpenFileDialog openFileDialog1;
         private Label miniminize;
         private Panel panel1;
+        private NotifyIcon notifyIcon1;
     }
 }
 
