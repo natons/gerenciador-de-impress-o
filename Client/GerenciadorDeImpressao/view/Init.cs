@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GerenciadorDeImpressao.management;
+using System;
 using System.Collections.Specialized;
 using System.Drawing.Printing;
 using System.Printing;
@@ -121,7 +122,7 @@ namespace GerenciadorDeImpressao
                     {
                         foreach (var job in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
                         {
-                            if ((lastJobId == 0 || lastJobId != job.JobIdentifier) && String.Compare(job.Submitter, Environment.UserName, true) == 0 )
+                            if ((lastJobId == 0 || lastJobId != job.JobIdentifier))// && String.Compare(job.Submitter, Environment.UserName, true) == 0 )
                             {
                                 this.idJob = job.JobIdentifier;
                                 DoWork(job, TrimPrinterName(print));
@@ -129,6 +130,7 @@ namespace GerenciadorDeImpressao
                             }
                         }
                     }
+                    Thread.Sleep(50);
                 }
             }
             catch(ThreadAbortException te)
@@ -141,67 +143,12 @@ namespace GerenciadorDeImpressao
             }
         }
 
-        private void VerifyOtherJobInQueue()
-        {
-            StringCollection printersSelected = new StringCollection();
-            int id = -1;
-            Invoke(new Action(() =>
-            {
-                printersSelected = DataManager.GetPrintersInArchive(path);
-                id = this.idJob;
-            }
-            ));
-            while (true)
-            {
-                foreach (var print in printersSelected)
-                {
-                    foreach (var item in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
-                    {
-                        if (item.JobIdentifier != id)
-                        {
-                            MessageBox.Show("Já existe um trabalho de impressão!");
-                            item.Cancel();
-                        }
-                    }
-                }
-            }
-        }
-
-        private void VerifyJobState()
-        {
-            StringCollection printersSelected = new StringCollection();
-            int id = -1;
-            Invoke(new Action(() =>
-            {
-                printersSelected = DataManager.GetPrintersInArchive(path);
-                id = this.idJob;
-            }
-            ));
-            while (true)
-            {
-                foreach (var print in printersSelected)
-                {
-                    foreach (var item in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
-                    {
-                        if (item.JobIdentifier == id && !item.IsPaused)
-                        {
-                            item.Pause();
-                        }
-                    }
-                }
-            }
-        }
-
         private void DoWork(PrintSystemJobInfo job, string printerName)
         {
             job.Refresh();
             job.Pause();
             job.Refresh();
-
-            Thread t1 = new Thread(() => VerifyOtherJobInQueue());
-            Thread t2 = new Thread(() => VerifyOtherJobInQueue());
-            t1.Start();
-            t2.Start();
+            job.Refresh();
 
             SelectCompany select = new SelectCompany(pathArchive, job);
             select.ShowDialog();
@@ -209,14 +156,11 @@ namespace GerenciadorDeImpressao
             if (select.GetCompanySelect().Trim().Length == 0)
             {
                 this.idJob = -1;
-                t1.Abort();
-                t2.Abort();
                 return;
             }
 
-            Console.WriteLine(select.GetCompanySelect());
             job.Refresh();
-            DataManager.InsertPrint(pathArchive,
+            DataManagerPrint.InsertPrint(pathArchive,
                 GetPrint(job.NumberOfPages * select.GetNumberOfCopies(), select.GetCompanySelect(), printerName, job.Name.ToString()));
 
             job.Refresh();
@@ -227,8 +171,6 @@ namespace GerenciadorDeImpressao
                 job.Refresh();
             }
 
-            t1.Abort();
-            t2.Abort();
             this.idJob = -1;
         }
 
@@ -238,22 +180,17 @@ namespace GerenciadorDeImpressao
             print.date = DateTime.Now;
             print.quantityPages = PrintJobManager.LowToner(printerName) == true ? 0 : qtdPaginas;
             print.documentName = documentName;
-            print.company = DataManager.GetCompany(pathArchive, company);
+            print.company = DataManagerCompany.GetCompany(pathArchive, company);
 
-            Printer printer = DataManager.GetPrinter(pathArchive, printerName, true);
+            Printer printer = DataManagerPrinter.GetPrinter(pathArchive, TrimPrinterName(printerName), true);
             printer.printedPages += qtdPaginas;
             printer.lastMediaPages = PrintJobManager.LowToner(printerName) == true ? printer.mediaPages : printer.lastMediaPages;
-            DataManager.UpdatePrinter(pathArchive, printer);
-            printer = DataManager.GetPrinter(pathArchive, printer.name, false);
+            DataManagerPrinter.UpdatePrinter(pathArchive, printer);
+            printer = DataManagerPrinter.GetPrinter(pathArchive, printer.name, false);
             print.printer = printer;
-            print.cost = printer.lastMediaPages * (double) qtdPaginas;
+            print.cost = printer.lastMediaPages * (double)qtdPaginas;
 
             return print;
-        }
-
-        private void SelectCompanyIsShow(SelectCompany form)
-        {
-            while (!form.GetClose());
         }
 
         private void selectDB_MouseHover(object sender, EventArgs e)

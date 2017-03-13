@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GerenciadorDeImpressao.management;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ namespace GerenciadorDeImpressao
     public partial class SelectCompany : Form
     {
         private string companySelect = "";
-        private bool close = false;
+        private bool cancel = true;
         private string pathArchive;
         private PrintSystemJobInfo job = null;
 
@@ -34,13 +35,13 @@ namespace GerenciadorDeImpressao
         private void btnOK_Click(object sender, EventArgs e)
         {
             companySelect = cbCompanies.SelectedItem.ToString();
-            close = true;
+            cancel = false;
             Dispose();
         }
 
         private void InitializeComboBoxCompanies()
         {
-            foreach(var item in DataManager.GetCompanies(pathArchive))
+            foreach(var item in DataManagerCompany.GetCompanies(pathArchive))
             {
                 cbCompanies.Items.Add(item.name);
             }
@@ -48,12 +49,8 @@ namespace GerenciadorDeImpressao
 
         private void SelectCompany_FormClosing(object sender, FormClosingEventArgs e)
         {
-            job.Cancel();
-        }
-
-        public bool GetClose()
-        {
-            return close;
+            if(cancel)
+                job.Cancel();
         }
 
         public string GetCompanySelect()
@@ -68,7 +65,6 @@ namespace GerenciadorDeImpressao
 
         private void btnCancelPrint_Click(object sender, EventArgs e)
         {
-            job.Cancel();
             Dispose();
         }
     }

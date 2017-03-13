@@ -107,18 +107,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection.cs" />
-    <Compile Include="DataManager.cs" />
-    <Compile Include="Init.cs">
+    <Compile Include="db\Connection.cs" />
+    <Compile Include="management\DataManager.cs" />
+    <Compile Include="management\DataManagerCompany.cs" />
+    <Compile Include="management\DataManagerPrint.cs" />
+    <Compile Include="management\DataManagerPrinter.cs" />
+    <Compile Include="view\Init.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Init.Designer.cs">
+    <Compile Include="view\Init.Designer.cs">
       <DependentUpon>Init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Company.cs" />
-    <Compile Include="Print.cs" />
-    <Compile Include="Printer.cs" />
-    <Compile Include="PrintJobManager.cs" />
+    <Compile Include="model\Company.cs" />
+    <Compile Include="model\Print.cs" />
+    <Compile Include="model\Printer.cs" />
+    <Compile Include="management\PrintJobManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -126,13 +129,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SelectCompany.cs">
+    <Compile Include="view\SelectCompany.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SelectCompany.Designer.cs">
+    <Compile Include="view\SelectCompany.Designer.cs">
       <DependentUpon>SelectCompany.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Init.resx">
+    <EmbeddedResource Include="view\Init.resx">
       <DependentUpon>Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -140,7 +143,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SelectCompany.resx">
+    <EmbeddedResource Include="view\SelectCompany.resx">
       <DependentUpon>SelectCompany.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GerenciadorDeImpressao_TemporaryKey.pfx" />
