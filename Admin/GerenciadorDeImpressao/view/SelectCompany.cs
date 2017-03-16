@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Printing;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,9 +37,16 @@ namespace GerenciadorDeImpressao
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            companySelect = cbCompanies.SelectedItem.ToString();
-            cancel = false;
-            Dispose();
+            if(cbCompanies.Text.Trim().Length > 0)
+            {
+                companySelect = cbCompanies.SelectedItem.ToString();
+                cancel = false;
+                Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma empresa");
+            }
         }
 
         private void InitializeComboBoxCompanies()

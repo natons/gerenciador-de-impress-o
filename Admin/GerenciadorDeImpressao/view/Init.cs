@@ -1,8 +1,12 @@
 ﻿using GerenciadorDeImpressao.management;
+using GerenciadorDeImpressao.model;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Drawing.Printing;
 using System.Printing;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -21,34 +25,14 @@ namespace GerenciadorDeImpressao
         private int idJob = -1;
         private int X = 0;
         private int Y = 0;
-
+        private List<Thread> threads = new List<Thread>();
+        private List<int> lasIds = new List<int>();
 
         public Init()
         {
             InitializeComponent();
             InitializeCbPrintersName();
             InitializeContextMenu();
-            InitializeHide();
-        }
-
-        private void InitializeHide()
-        {
-            if (DataManager.GetPrintersInArchive().Count > 0)
-            {
-                StringCollection printers = DataManager.GetPrintersInArchive();
-                for (int i = 0; i < printers.Count - 1; i++)
-                {
-                    clbPrintersName.SelectedItems.Add(printers[i]);
-                    clbPrintersName.SetItemChecked(clbPrintersName.Items.IndexOf(printers[i]), true);
-                }
-                pathArchive = printers[printers.Count - 1].ToString();
-                clbPrintersName.Update();
-                clbPrintersName.Refresh();
-                btnConfirm_Click(pathArchive, new EventArgs());
-
-                this.Opacity = 0;
-                this.ShowInTaskbar = false;
-            }
         }
 
         private object ExistsInList(string name)
@@ -135,7 +119,7 @@ namespace GerenciadorDeImpressao
         private StringCollection GetSelectedPrinters()
         {
             StringCollection selectedPrinters = new StringCollection();
-            foreach (var item in clbPrintersName.SelectedItems)
+            foreach (var item in clbPrintersName.CheckedItems)
             {
                 selectedPrinters.Add(item.ToString());
             }
@@ -149,7 +133,10 @@ namespace GerenciadorDeImpressao
             {
                 Hide();
                 if (threadContext != null)
+                {
                     threadContext.Abort();
+                    RemoveThreads();
+                }
                 threadContext = new Thread(() => InitLoopVerifyJobs());
                 threadContext.IsBackground = false;
                 threadContext.Start();
@@ -218,6 +205,8 @@ namespace GerenciadorDeImpressao
         {
             if (threadContext != null)
                 threadContext.Abort();
+            if (threads.Count > 0)
+                RemoveThreads();
             Dispose();
         }
 
@@ -237,29 +226,19 @@ namespace GerenciadorDeImpressao
         {
             try
             {
-                int lastJobId = 0;
+                
                 StringCollection printersSelected = new StringCollection();
                 Invoke(new Action(() =>
                 {
                     printersSelected = GetSelectedPrinters();
                 }
                 ));
-                while (true)
-                {
-                    foreach (var print in printersSelected)
-                    {
-                        foreach (var job in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
-                        {
-                            if ((lastJobId == 0 || lastJobId != job.JobIdentifier))// && String.Compare(job.Submitter, Environment.UserName, true) == 0)
-                            {
-                                this.idJob = job.JobIdentifier;
-                                DoWork(job, TrimPrinterName(print));
-                                lastJobId = job.JobIdentifier;
-                            }
-                        }
-                    }
-                    Thread.Sleep(50);
-                }
+                CreateThreads(printersSelected);
+                
+            }
+            catch (NullReferenceException ne)
+            {
+
             }
             catch (ThreadAbortException te)
             {
@@ -271,15 +250,87 @@ namespace GerenciadorDeImpressao
             }
         }
 
-        private void DoWork(PrintSystemJobInfo job, string printerName)
+        private bool IsGo(int id)
         {
+            foreach(var item in lasIds)
+            {
+                if (item == id)
+                    return true;
+            }
+
+            return false;
+        }
+
+        private void CreateThreads(StringCollection printers)
+        {
+            threads = new List<Thread>();
+            foreach(var print in printers)
+            {
+                Thread t = new Thread(() =>
+                {
+                    int lastJobId = 0;
+                    while (true)
+                    {
+                        foreach (var job in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
+                        {
+                            if ((lastJobId == 0 || !IsGo(job.JobIdentifier)) && !job.IsPaused && String.Compare(job.Submitter, Environment.UserName, true) == 0)
+                            {
+                                this.idJob = job.JobIdentifier;
+                                Thread th = new Thread(new ParameterizedThreadStart(DoWork));
+                                ProcessPrint process = new ProcessPrint();
+                                process.jobId = job.JobIdentifier;
+                                process.print = print;
+                                th.Start(process);
+                                
+                                lastJobId = job.JobIdentifier;
+                                if (lasIds.Count > 5)
+                                    lasIds = new List<int>();
+                                lasIds.Add(job.JobIdentifier);
+                            }
+                        }
+                        Thread.Sleep(1);
+                    }
+                }
+                );
+                threads.Add(t);
+                t.Start();
+            }
+        }
+        
+
+        private void RemoveThreads()
+        {
+            foreach(var item in threads)
+            {
+                item.Abort();
+            }
+        }
+
+        private PrintSystemJobInfo GetJob(int id, string print)
+        {
+            foreach (var job in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
+            {
+                if (id == job.JobIdentifier)
+                    return job;
+            }
+
+            return null;
+        }
+
+        private void DoWork(object obj)
+        {
+            ProcessPrint p = (ProcessPrint)obj;
+            PrintSystemJobInfo job = GetJob(p.jobId, p.print);
+            string printerName = TrimPrinterName(p.print);
             job.Refresh();
             job.Pause();
+            job.Refresh();
             job.Refresh();
             job.Refresh();
 
             SelectCompany select = new SelectCompany(pathArchive, job);
             select.ShowDialog();
+
 
             if (select.GetCompanySelect().Trim().Length == 0)
             {
@@ -291,15 +342,10 @@ namespace GerenciadorDeImpressao
             DataManagerPrint.InsertPrint(pathArchive,
                 GetPrint(job.NumberOfPages * select.GetNumberOfCopies(), select.GetCompanySelect(), printerName, job.Name.ToString()));
 
-            job.Refresh();
-            if (job.JobStatus == PrintJobStatus.Paused)
-            {
-                job.Refresh();
-                job.Resume();
-                job.Refresh();
-            }
-
-            this.idJob = -1;
+           if(job.IsPaused)
+            job.Resume();
+           job.Refresh();
+           this.idJob = -1;
         }
 
         private Print GetPrint(int qtdPaginas, string company, string printerName, string documentName)
@@ -437,6 +483,35 @@ namespace GerenciadorDeImpressao
         private void close_MouseLeave(object sender, EventArgs e)
         {
             close.Image = Properties.Resources.close;
+        }
+
+        private void Init_Shown(object sender, EventArgs e)
+        {
+            if (DataManager.GetPrintersInArchive().Count > 0)
+            {
+                StringCollection printers = DataManager.GetPrintersInArchive();
+                for (int i = 0; i < printers.Count - 1; i++)
+                {
+                    clbPrintersName.SelectedItems.Add(printers[i]);
+                    clbPrintersName.SetItemChecked(clbPrintersName.Items.IndexOf(printers[i]), true);
+                }
+                pathArchive = printers[printers.Count - 1].ToString();
+                clbPrintersName.Update();
+                clbPrintersName.Refresh();
+                btnConfirm_Click(pathArchive, new EventArgs());
+
+                this.Opacity = 0;
+                this.ShowInTaskbar = false;
+            }
+        }
+
+        private void Init_Load(object sender, EventArgs e)
+        {
+            if (DataManager.GetPrintersInArchive().Count > 0)
+            {
+                this.Opacity = 0;
+                this.ShowInTaskbar = false;
+            }
         }
     }
 }

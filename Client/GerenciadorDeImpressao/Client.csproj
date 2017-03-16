@@ -112,6 +112,7 @@
     <Compile Include="management\DataManagerCompany.cs" />
     <Compile Include="management\DataManagerPrint.cs" />
     <Compile Include="management\DataManagerPrinter.cs" />
+    <Compile Include="model\Process.cs" />
     <Compile Include="view\Init.cs">
       <SubType>Form</SubType>
     </Compile>

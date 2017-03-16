@@ -18,7 +18,6 @@ namespace GerenciadorDeImpressao
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Init init = new Init();
-            init.Visible = false;
             Application.Run(init);
         }
     }

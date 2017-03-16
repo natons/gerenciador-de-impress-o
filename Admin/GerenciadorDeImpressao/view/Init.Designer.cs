@@ -188,6 +188,8 @@ namespace GerenciadorDeImpressao
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Init_FormClosing);
+            this.Load += new System.EventHandler(this.Init_Load);
+            this.Shown += new System.EventHandler(this.Init_Shown);
             this.Resize += new System.EventHandler(this.Init_Resize);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

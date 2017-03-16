@@ -54,7 +54,6 @@ C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressa
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\itextsharp.xml
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.xml
-C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.csprojResolveAssemblyReference.cache
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.Init.resources
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.InsertCompanies.resources
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.Properties.Resources.resources
@@ -64,3 +63,4 @@ C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressa
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.application
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
+C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.csprojResolveAssemblyReference.cache

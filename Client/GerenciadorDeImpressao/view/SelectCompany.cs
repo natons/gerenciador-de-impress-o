@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Printing;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,9 +36,16 @@ namespace GerenciadorDeImpressao
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            companySelect = cbCompanies.SelectedItem.ToString();
-            cancel = false;
-            Dispose();
+            if (cbCompanies.Text.Trim().Length > 0)
+            {
+                companySelect = cbCompanies.SelectedItem.ToString();
+                cancel = false;
+                Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma empresa");
+            }
         }
 
         private void InitializeComboBoxCompanies()
@@ -66,6 +75,28 @@ namespace GerenciadorDeImpressao
         private void btnCancelPrint_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private static class User32
+        {
+            [DllImport("User32.dll")]
+            internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
+
+            [DllImport("user32.dll")]
+            internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+            internal static readonly IntPtr InvalidHandleValue = IntPtr.Zero;
+            internal const int SW_MAXIMIZE = 3;
+        }
+        public void Activate()
+        {
+            Process currentProcess = Process.GetCurrentProcess();
+            IntPtr hWnd = currentProcess.MainWindowHandle;
+            if (hWnd != User32.InvalidHandleValue)
+            {
+                User32.SetForegroundWindow(hWnd);
+                User32.ShowWindow(hWnd, User32.SW_MAXIMIZE);
+            }
         }
     }
 }

@@ -45,6 +45,7 @@
             this.cbCompanies.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.cbCompanies.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.cbCompanies.DisplayMember = "Sele";
+            this.cbCompanies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCompanies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCompanies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCompanies.ForeColor = System.Drawing.SystemColors.MenuText;
@@ -133,7 +134,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::GerenciadorDeImpressao.Properties.Resources.fundoSelecionarEmpresa;
-            this.ClientSize = new System.Drawing.Size(464, 218);
+            this.ClientSize = new System.Drawing.Size(456, 215);
             this.Controls.Add(this.btnCancelPrint);
             this.Controls.Add(this.lbDocumentName);
             this.Controls.Add(this.label2);
@@ -142,10 +143,12 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cbCompanies);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(504, 254);
             this.Name = "SelectCompany";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelectCompany";
+            this.TopMost = true;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectCompany_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.numberOfCopies)).EndInit();
             this.ResumeLayout(false);
