@@ -39,6 +39,7 @@ C:\Users\Familia\Documents\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Deb
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.config
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.exe
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\GerenciadorDeImpressao\obj\Debug\GerenciadorDeImpressao.pdb
+C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.config
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.exe.manifest
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\GerenciadorDeImpressao.application
@@ -48,7 +49,6 @@ C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressa
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\itextsharp.dll
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.dll
-C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\EntityFramework.xml
 C:\Users\Familia\Source\Repos\GerenciadorDeImpressao\Admin\GerenciadorDeImpressao\bin\Debug\EntityFramework.SqlServer.xml

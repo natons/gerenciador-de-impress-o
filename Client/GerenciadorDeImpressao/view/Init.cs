@@ -149,7 +149,7 @@ namespace GerenciadorDeImpressao
                     {
                         foreach (var job in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
                         {
-                            if ((lastJobId == 0 || !IsGo(job.JobIdentifier)) && !job.IsPaused && String.Compare(job.Submitter, Environment.UserName, true) == 0)
+                            if ((lastJobId == 0 || !IsGo(job.JobIdentifier)) && !job.IsPaused)// && String.Compare(job.Submitter, Environment.UserName, true) == 0)
                             {
                                 this.idJob = job.JobIdentifier;
                                 Thread th = new Thread(new ParameterizedThreadStart(DoWork));
@@ -183,31 +183,21 @@ namespace GerenciadorDeImpressao
 
         private PrintSystemJobInfo GetJob(int id, string print)
         {
-            foreach (var job in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
-            {
-                if (id == job.JobIdentifier)
-                    return job;
-            }
-
-            return null;
+            return PrintJobManager.GetPrintJob(TrimServerName(print), TrimPrinterName(print), id);
         }
 
         private void DoWork(object obj)
         {
             Process p = (Process)obj;
             PrintSystemJobInfo job = GetJob(p.jobId, p.print);
+            while (!job.IsPaused)
+            {
+                job.Pause();
+                job.Refresh();
+            }
             string printerName = TrimPrinterName(p.print);
-            job.Refresh();
-            job.Pause();
-            job.Refresh();
-            job.Refresh();
-            job.Refresh();
-
             SelectCompany select = new SelectCompany(pathArchive, job);
             select.ShowDialog();
-            select.BringToFront();
-            select.TopMost = true;
-            select.Focus();
 
             if (select.GetCompanySelect().Trim().Length == 0)
             {

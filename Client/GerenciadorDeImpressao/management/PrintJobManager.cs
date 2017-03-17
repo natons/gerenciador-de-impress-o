@@ -49,6 +49,29 @@ namespace GerenciadorDeImpressao
             return null;
         }
 
+        public static PrintSystemJobInfo GetPrintJob(string serverName, string printerName, int jobId)
+        {
+            PrintServer ps = null;
+            PrintQueue printQueue = null;
+            try
+            {
+                if (serverName == null)
+                    ps = new PrintServer();
+                else
+                    ps = new PrintServer(@"" + serverName);
+                printQueue = ps.GetPrintQueue(printerName);
+
+                return printQueue.GetJob(jobId);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Erro ao se conectar ao servidor de impressão {serverName} {e.Message}");
+                Thread.CurrentThread.Abort();
+            }
+
+            return null;
+        }
+
         public static bool LowToner(string namePrinter)
         {
             string searchQuery = "SELECT * FROM Win32_Printer WHERE Name LIKE '%" + namePrinter + "%'";

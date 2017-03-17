@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,14 +38,11 @@ namespace GerenciadorDeImpressao.management
 
         private static string GetDoubleString(double value)
         {
-            if (value == 0)
-                return value.ToString();
-            var stringBuilder = new StringBuilder();
-            stringBuilder.Append(value.ToString().Substring(0, value.ToString().LastIndexOf(',')));
-            stringBuilder.Append(".");
-            stringBuilder.Append(value.ToString().Substring(value.ToString().LastIndexOf(',') + 1));
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
+            string x = value.ToString(nfi);
 
-            return stringBuilder.ToString();
+            return x;
         }
 
         public static List<Print> GetPrintsToCompany(string path, int id)

@@ -308,26 +308,19 @@ namespace GerenciadorDeImpressao
 
         private PrintSystemJobInfo GetJob(int id, string print)
         {
-            foreach (var job in PrintJobManager.GetPrintJobsCollection(TrimServerName(print), TrimPrinterName(print)))
-            {
-                if (id == job.JobIdentifier)
-                    return job;
-            }
-
-            return null;
+            return PrintJobManager.GetPrintJob(TrimServerName(print), TrimPrinterName(print), id);
         }
 
         private void DoWork(object obj)
         {
             ProcessPrint p = (ProcessPrint)obj;
             PrintSystemJobInfo job = GetJob(p.jobId, p.print);
+            while (!job.IsPaused)
+            {
+                job.Pause();
+                job.Refresh();
+            }
             string printerName = TrimPrinterName(p.print);
-            job.Refresh();
-            job.Pause();
-            job.Refresh();
-            job.Refresh();
-            job.Refresh();
-
             SelectCompany select = new SelectCompany(pathArchive, job);
             select.ShowDialog();
 

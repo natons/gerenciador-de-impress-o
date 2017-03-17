@@ -200,13 +200,20 @@ namespace GerenciadorDeImpressao
 
         private void confirmPrinted_Click(object sender, EventArgs e)
         {
-            Printer printer = DataManagerPrinter.GetPrinter(pathArchive, lbPrinters.SelectedItem.ToString().Trim(), false);
-            printer.lastMediaPages = Double.Parse(tbMediaPages.Text.ToString().Trim());
-            printer.priceToner = Double.Parse(tbPriceToner.Text.ToString().Trim());
-            printer.printedPages = Int32.Parse(tbPrintedPages.Text.ToString().Trim());
-            DataManagerPrinter.UpdatePrinter(pathArchive, printer);
-            StateTextBoxPrinted(true);
-            InitializeListPrinters();
+            try
+            {
+                Printer printer = DataManagerPrinter.GetPrinter(pathArchive, lbPrinters.SelectedItem.ToString().Trim(), false);
+                printer.lastMediaPages = Double.Parse(tbMediaPages.Text.ToString().Trim());
+                printer.priceToner = Double.Parse(tbPriceToner.Text.ToString().Trim());
+                printer.printedPages = Int32.Parse(tbPrintedPages.Text.ToString().Trim());
+                DataManagerPrinter.UpdatePrinter(pathArchive, printer);
+                StateTextBoxPrinted(true);
+                InitializeListPrinters();
+            }
+            catch(FormatException ex)
+            {
+                MessageBox.Show("Verifique os valores inseridos! Digite somente números.");
+            }
         }
 
         private void ClearTextBox()
@@ -247,7 +254,7 @@ namespace GerenciadorDeImpressao
                 lbMessage.Text = "Empresa apagada com sucesso!";
 
                 InitializeListCompanies();
-                InitializeGrid();
+                dgvCompanies.DataSource = null;
             }
             else
             {
@@ -274,7 +281,7 @@ namespace GerenciadorDeImpressao
 
         private void InitializeGridR()
         {
-            if (cbCompaniesR.Items.Count > 0)
+            if (cbCompaniesR.Items.Count > 1)
             {
                 Company company = DataManagerCompany.GetCompany(pathArchive, cbCompaniesR.SelectedItem.ToString());
                 Printer printer = DataManagerPrinter.GetPrinter(pathArchive, cbPrintersR.SelectedItem.ToString(), false);

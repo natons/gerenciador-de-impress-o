@@ -58,7 +58,7 @@ namespace GerenciadorDeImpressao
 
         private void SelectCompany_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(cancel)
+            if(cancel && job != null)
                 job.Cancel();
         }
 
@@ -76,27 +76,6 @@ namespace GerenciadorDeImpressao
         {
             Dispose();
         }
-
-        private static class User32
-        {
-            [DllImport("User32.dll")]
-            internal static extern IntPtr SetForegroundWindow(IntPtr hWnd);
-
-            [DllImport("user32.dll")]
-            internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-            internal static readonly IntPtr InvalidHandleValue = IntPtr.Zero;
-            internal const int SW_MAXIMIZE = 3;
-        }
-        public void Activate()
-        {
-            Process currentProcess = Process.GetCurrentProcess();
-            IntPtr hWnd = currentProcess.MainWindowHandle;
-            if (hWnd != User32.InvalidHandleValue)
-            {
-                User32.SetForegroundWindow(hWnd);
-                User32.ShowWindow(hWnd, User32.SW_MAXIMIZE);
-            }
-        }
+        
     }
 }
